@@ -10,5 +10,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        button = (Button) findViewById(R.id.button_jouer);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDifficulte();
+            }
+        });
+    }
+    public void openDifficulte() {
+        Intent intent = new Intent(this, Difficulte.class);
+        startActivity(intent);
     }
 }
