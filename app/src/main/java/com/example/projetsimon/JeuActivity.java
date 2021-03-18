@@ -47,11 +47,10 @@ public class JeuActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        int niveaux = 1;
+        int niveaux = 0;
         if (intent != null) {
-            if (intent.hasExtra("difficulte")) {
-                niveaux = intent.getIntExtra("difficulte", 1);
-                
+            if (intent.hasExtra("Difficulte")) {
+                niveaux = intent.getIntExtra("Difficulte", 0);
             }
         }
 
@@ -74,12 +73,14 @@ public class JeuActivity extends AppCompatActivity {
         Button06.getBackground().setAlpha(0);
         Button07.getBackground().setAlpha(0);
         Button08.getBackground().setAlpha(0);
+        Button09.getBackground().setAlpha(0);
+        Button10.getBackground().setAlpha(0);
         switch(niveaux) {
             case 1:
-                Button09.getBackground().setAlpha(0);
-                Button10.getBackground().setAlpha(0);
-
-
+                Button02.getBackground().setAlpha(32);
+                Button04.getBackground().setAlpha(32);
+                Button08.getBackground().setAlpha(32);
+                Button10.getBackground().setAlpha(32);
                 break;
             case 2:
                 //Difficile
