@@ -9,22 +9,22 @@ import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity {
-    private Button button;
+    private Button buttonPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = (Button) findViewById(R.id.button_jouer);
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonPlay = (Button) findViewById(R.id.button_jouer);
+        buttonPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openDifficulte();
+                openNiveaux();
             }
         });
     }
-    public void openDifficulte() {
+    public void openNiveaux() {
         Intent intent = new Intent(this, NiveauxActivity.class);
         startActivity(intent);
     }
