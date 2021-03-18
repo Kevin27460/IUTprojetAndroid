@@ -80,13 +80,16 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="34dp"
-        android:layout_height="24dp"
+        android:layout_width="31dp"
+        android:layout_height="18dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toTopOf="@+id/guideline16"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="@+id/guideline14"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/coeur"
-        android:contentDescription="TODO" />
+        app:layout_constraintVertical_bias="0.473"
+        app:srcCompat="@drawable/coeur" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline12"
