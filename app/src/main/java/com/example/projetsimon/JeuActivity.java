@@ -2,6 +2,7 @@ package com.example.projetsimon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,13 +10,32 @@ import android.widget.Button;
 
 public class JeuActivity extends AppCompatActivity {
     private Button buttonQuitter;
-
+    private Button Button01;
+    private Button Button02;
+    private Button Button03;
+    private Button Button04;
+    private Button Button05;
+    private Button Button06;
+    private Button Button07;
+    private Button Button08;
+    private Button Button09;
+    private Button Button10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu);
-
+        Button01= (Button) findViewById(R.id.button01);
+        Button02= (Button) findViewById(R.id.button02);
+        Button03= (Button) findViewById(R.id.button03);
+        Button04= (Button) findViewById(R.id.button04);
+        Button05= (Button) findViewById(R.id.button05);
+        Button06= (Button) findViewById(R.id.button06);
+        Button07= (Button) findViewById(R.id.button07);
+        Button08= (Button) findViewById(R.id.button08);
+        Button09= (Button) findViewById(R.id.button09);
+        Button10= (Button) findViewById(R.id.button10);
 
         buttonQuitter = (Button) findViewById(R.id.button_quitter);
         buttonQuitter.setOnClickListener(new View.OnClickListener() {
@@ -24,12 +44,63 @@ public class JeuActivity extends AppCompatActivity {
                 openNiveaux();
             }
         });
+
+
+        Intent intent = getIntent();
+        int niveaux = 1;
+        if (intent != null) {
+            if (intent.hasExtra("difficulte")) {
+                niveaux = intent.getIntExtra("difficulte", 1);
+                
+            }
+        }
+
+        Jeu(niveaux);
+
     }
 
     public void openNiveaux() {
         Intent intent = new Intent(this, NiveauxActivity.class);
         startActivity(intent);
     }
+
+    public void Jeu(int niveaux) {
+
+        Button01.getBackground().setAlpha(0);
+        Button02.getBackground().setAlpha(0);
+        Button03.getBackground().setAlpha(0);
+        Button04.getBackground().setAlpha(0);
+        Button05.getBackground().setAlpha(0);
+        Button06.getBackground().setAlpha(0);
+        Button07.getBackground().setAlpha(0);
+        Button08.getBackground().setAlpha(0);
+        switch(niveaux) {
+            case 1:
+                Button09.getBackground().setAlpha(0);
+                Button10.getBackground().setAlpha(0);
+
+
+                break;
+            case 2:
+                //Difficile
+                break;
+            case 3:
+                //Expert
+                break;
+            case 4:
+                //Chrono
+                break;
+        }
+    }
+    
+}
+      
+    
+    
+    
+    
+    
+    
 
    /* nbrBloc = 4;
     for(int i =0; i <= startSeq;i++)
@@ -98,4 +169,3 @@ public class JeuActivity extends AppCompatActivity {
 
 
 
-}

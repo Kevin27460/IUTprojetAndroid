@@ -25,6 +25,7 @@ public class NiveauxActivity extends AppCompatActivity {
     }
     public void openJeu() {
         Intent intent = new Intent(this, JeuActivity.class);
+        intent.putExtra("Difficulté", 1);
         startActivity(intent);
     }
 
