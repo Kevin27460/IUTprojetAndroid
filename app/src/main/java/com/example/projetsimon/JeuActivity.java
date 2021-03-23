@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Random;
+
 public class JeuActivity extends AppCompatActivity {
     private Button buttonQuitter;
     private Button Button01;
@@ -20,6 +22,7 @@ public class JeuActivity extends AppCompatActivity {
     private Button Button08;
     private Button Button09;
     private Button Button10;
+    int [] sequenceTab = new int[19];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,9 @@ public class JeuActivity extends AppCompatActivity {
     }
 
     public void Jeu(int niveaux) {
+        int maxSeq = 0;
+        int startSeq = 0;
+        int nbrBloc = 0;
 
         Button01.getBackground().setAlpha(0);
         Button02.getBackground().setAlpha(0);
@@ -75,12 +81,14 @@ public class JeuActivity extends AppCompatActivity {
         Button08.getBackground().setAlpha(0);
         Button09.getBackground().setAlpha(0);
         Button10.getBackground().setAlpha(0);
+
         switch(niveaux) {
             case 1:
                 Button02.getBackground().setAlpha(32);
                 Button04.getBackground().setAlpha(32);
                 Button08.getBackground().setAlpha(32);
                 Button10.getBackground().setAlpha(32);
+
                 break;
             case 2:
                 //Difficile
@@ -92,6 +100,9 @@ public class JeuActivity extends AppCompatActivity {
                 //Chrono
                 break;
         }
+        for(int i =0; i <= startSeq; i++){
+            sequenceTab[i] = new Random().nextInt(nbrBloc);
+            maxSeq=startSeq;}
     }
     
 }
