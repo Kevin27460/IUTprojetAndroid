@@ -115,13 +115,16 @@ public class JeuActivity extends AppCompatActivity {
                 multiplicateurScore = 2;
                 break;
         }
-        initTab();
+        initTab(startSeq);
+        affichage();
     }
 
-    private void initTab(){
-        for(int i =0; i < startSeq; i++)
+    private int initTab(int deb){
+        for(int i =0; i < deb; i++)
             sequenceTab[i] = new Random().nextInt(nbrBloc);
-            maxSeq=startSeq;
+            maxSeq=deb;
+
+            return sequenceTab [deb] ;
     }
 
     private void affichage(){
