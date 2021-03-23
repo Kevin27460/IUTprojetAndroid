@@ -23,6 +23,11 @@ public class JeuActivity extends AppCompatActivity {
     private Button Button09;
     private Button Button10;
     int [] sequenceTab = new int[19];
+    int maxSeq = 0;
+    int startSeq = 0;
+    int nbrBloc = 0;
+    int vie = 0;
+    double multiplicateurScore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +72,6 @@ public class JeuActivity extends AppCompatActivity {
     }
 
     public void Jeu(int niveaux) {
-        int maxSeq = 0;
-        int startSeq = 0;
-        int nbrBloc = 0;
-        int vie = 0;
-        double multiplicateurScore = 0;
 
         Button01.getBackground().setAlpha(0);
         Button02.getBackground().setAlpha(0);
@@ -86,6 +86,7 @@ public class JeuActivity extends AppCompatActivity {
 
         switch(niveaux) {
             case 1:
+                //Facile
                 Button02.getBackground().setAlpha(32);
                 Button04.getBackground().setAlpha(32);
                 Button08.getBackground().setAlpha(32);
@@ -94,41 +95,74 @@ public class JeuActivity extends AppCompatActivity {
                 startSeq = 1;
                 vie  = 2;
                 multiplicateurScore = 1;
-
-
                 break;
             case 2:
                 //Difficile
-
                 startSeq = 3;
                 vie  = 2;
                 multiplicateurScore = 1.5;
-
-
                 break;
             case 3:
                 //Expert
-
                 startSeq = 5;
                 vie  = 3;
                 multiplicateurScore = 3;
-
-
                 break;
             case 4:
                 //Chrono
-
                 startSeq = 1;
                 vie  = 3;
                 multiplicateurScore = 2;
-
-
                 break;
         }
-        for(int i =0; i <= startSeq; i++){
-            sequenceTab[i] = new Random().nextInt(nbrBloc);
-            maxSeq=startSeq;}
+        initTab();
     }
+
+    private void initTab(){
+        for(int i =0; i < startSeq; i++)
+            sequenceTab[i] = new Random().nextInt(nbrBloc);
+            maxSeq=startSeq;
+    }
+
+    private void affichage(){
+        for(int i=0; i<maxSeq;i++)
+        {
+            switch(sequenceTab[i]) {
+                case 0:
+                    Button02.getBackground().setAlpha(32);
+                    break;
+                case 1:
+                    Button04.getBackground().setAlpha(32);
+                    break;
+                case 2:
+                    Button08.getBackground().setAlpha(32);
+                    break;
+                case 3:
+                    Button10.getBackground().setAlpha(32);
+                    break;
+                case 4:
+                    Button06.getBackground().setAlpha(32);
+                    break;
+                case 5:
+                    Button01.getBackground().setAlpha(32);
+                    break;
+                case 6:
+                    Button03.getBackground().setAlpha(32);
+                    break;
+                case 7:
+                    Button09.getBackground().setAlpha(32);
+                    break;
+                case 8:
+                    Button05.getBackground().setAlpha(32);
+                    break;
+                case 9:
+                    Button07.getBackground().setAlpha(32);
+                    break;
+            }
+        }
+    }
+
+
     
 }
       
