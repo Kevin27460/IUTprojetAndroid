@@ -70,6 +70,8 @@ public class JeuActivity extends AppCompatActivity {
         int maxSeq = 0;
         int startSeq = 0;
         int nbrBloc = 0;
+        int vie = 0;
+        double multiplicateurScore = 0;
 
         Button01.getBackground().setAlpha(0);
         Button02.getBackground().setAlpha(0);
@@ -89,15 +91,38 @@ public class JeuActivity extends AppCompatActivity {
                 Button08.getBackground().setAlpha(32);
                 Button10.getBackground().setAlpha(32);
 
+                startSeq = 1;
+                vie  = 2;
+                multiplicateurScore = 1;
+
+
                 break;
             case 2:
                 //Difficile
+
+                startSeq = 3;
+                vie  = 2;
+                multiplicateurScore = 1.5;
+
+
                 break;
             case 3:
                 //Expert
+
+                startSeq = 5;
+                vie  = 3;
+                multiplicateurScore = 3;
+
+
                 break;
             case 4:
                 //Chrono
+
+                startSeq = 1;
+                vie  = 3;
+                multiplicateurScore = 2;
+
+
                 break;
         }
         for(int i =0; i <= startSeq; i++){
