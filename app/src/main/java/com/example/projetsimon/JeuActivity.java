@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -22,6 +23,7 @@ public class JeuActivity extends AppCompatActivity {
     private Button Button08;
     private Button Button09;
     private Button Button10;
+    private TextView test;
     int [] sequenceTab = new int[19];
     int maxSeq = 0;
     int startSeq = 0;
@@ -44,6 +46,7 @@ public class JeuActivity extends AppCompatActivity {
         Button08= (Button) findViewById(R.id.button08);
         Button09= (Button) findViewById(R.id.button09);
         Button10= (Button) findViewById(R.id.button10);
+        test =(TextView) findViewById(R.id.test_texte);
 
         buttonQuitter = (Button) findViewById(R.id.button_quitter);
         buttonQuitter.setOnClickListener(new View.OnClickListener() {
@@ -115,19 +118,27 @@ public class JeuActivity extends AppCompatActivity {
                 multiplicateurScore = 2;
                 break;
         }
-        initTab(startSeq);
+        Random r = new Random();
+       //sequenceTab = initTab(startSeq);
+
+        //for(int i =0; i < 1; i++){
+          //  sequenceTab[i] = r.nextInt(nbrBloc);}
+        test.setText("test1");
+
         affichage();
     }
 
-    private int initTab(int deb){
-        for(int i =0; i < deb; i++)
-            sequenceTab[i] = new Random().nextInt(nbrBloc);
-            maxSeq=deb;
 
-            return sequenceTab [deb] ;
+
+    private int[] initTab(int deb){
+        int [] Tab  = new int[19];
+        for(int i =0; i < deb; i++)
+            Tab[i] = new Random().nextInt(nbrBloc);
+            return Tab;
     }
 
     private void affichage(){
+        test.setText("test2");
         for(int i=0; i<maxSeq;i++)
         {
             switch(sequenceTab[i]) {
