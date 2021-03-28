@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static java.lang.System.nanoTime;
 
 public class JeuActivity extends AppCompatActivity {
     private Button buttonStart;
@@ -117,6 +120,11 @@ public class JeuActivity extends AppCompatActivity {
                 break;
             case 2:
                 //Difficile
+                Button02.getBackground().setAlpha(32);
+                Button04.getBackground().setAlpha(32);
+                Button08.getBackground().setAlpha(32);
+                Button10.getBackground().setAlpha(32);
+
                 startSeq = 3;
                 vie  = 2;
                 multiplicateurScore = 1.5;
@@ -137,7 +145,7 @@ public class JeuActivity extends AppCompatActivity {
         test.setText("test0");
         initTab(startSeq);
         maxSeq=startSeq;
-        test.setText(String.valueOf(sequenceTab[startSeq-1]));//test de debug;
+       test.setText(String.valueOf(sequenceTab[startSeq-1]));//test de debug;
         affichage();
     }
 
@@ -152,69 +160,95 @@ public class JeuActivity extends AppCompatActivity {
     }
 
     private void affichage() throws InterruptedException {
-        test.setText("allume");
-        for(int i=0; i<4;i++)
+        test.setText(String.valueOf(sequenceTab[0]));
+        long start= nanoTime();
+        Thread thread = new Thread();
+        for(int i=0; i<maxSeq;i++)
         {
             switch(sequenceTab[i]) {
                 case 0:
-                    Thread thread = new Thread(){
-                        public void run(){
-
-                        }
-                    };
-
-                    thread.start();
 
                     Button02.getBackground().setAlpha(255);
 
-                    Button02.getBackground().setAlpha(32);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            Button02.getBackground().setAlpha(32);
+                        }
+                    }, 1000);
+
+                 //   thread.sleep(1000);
+
                     break;
                 case 1:
-                    Button04.getBackground().setAlpha(255);
 
-                    Button02.getBackground().setAlpha(32);
+                    Button04.getBackground().setAlpha(255);
+                    Handler handler2 = new Handler();
+                    handler2.postDelayed(new Runnable() {
+                        public void run() {
+                            Button04.getBackground().setAlpha(32);
+                        }
+                    }, 1000);
+
+                   // thread.sleep(1000);
+
                     break;
                 case 2:
-                    Button08.getBackground().setAlpha(255);
 
-                    Button02.getBackground().setAlpha(32);
+                    Button08.getBackground().setAlpha(255);
+                    Handler handler3 = new Handler();
+                    handler3.postDelayed(new Runnable() {
+                        public void run() {
+                            Button08.getBackground().setAlpha(32);
+                        }
+                    }, 1000);
+                 //   thread.sleep(1000);
+
                     break;
                 case 3:
-                    Button10.getBackground().setAlpha(255);
 
-                    Button02.getBackground().setAlpha(32);
+                    Button10.getBackground().setAlpha(255);
+                    Handler handler4 = new Handler();
+                    handler4.postDelayed(new Runnable() {
+                        public void run() {
+                            Button10.getBackground().setAlpha(32);
+                        }
+                    }, 1000);
+                 //   thread.sleep(1000);
+
                     break;
                 case 4:
                     Button06.getBackground().setAlpha(255);
                   //  wait(1000 );
-                    Button02.getBackground().setAlpha(32);
+                    Button06.getBackground().setAlpha(32);
                     break;
                 case 5:
                     Button01.getBackground().setAlpha(255);
                  //   wait(1000 );
-                    Button02.getBackground().setAlpha(32);
+                    Button01.getBackground().setAlpha(32);
                     break;
                 case 6:
                     Button03.getBackground().setAlpha(255);
                  //   wait(1000 );
-                    Button02.getBackground().setAlpha(32);
+                    Button03.getBackground().setAlpha(32);
                     break;
                 case 7:
                     Button09.getBackground().setAlpha(255);
                   //  wait(1000 );
-                    Button02.getBackground().setAlpha(32);
+                    Button09.getBackground().setAlpha(32);
                     break;
                 case 8:
                     Button05.getBackground().setAlpha(255);
                   //  wait(1000 );
-                    Button02.getBackground().setAlpha(32);
+                    Button05.getBackground().setAlpha(32);
                     break;
                 case 9:
                     Button07.getBackground().setAlpha(255);
                   //  wait(1000 );
-                    Button02.getBackground().setAlpha(32);
+                    Button07.getBackground().setAlpha(32);
                     break;
             }
+
         }
     }
 

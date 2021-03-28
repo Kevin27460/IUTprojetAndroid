@@ -12,11 +12,20 @@ public class NiveauxActivity extends AppCompatActivity {
     private Button buttonDifficile;
     private Button buttonExpert;
     private Button buttonChrono;
+    private Button buttonQuitter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_niveaux);
+
+        buttonQuitter = (Button) findViewById(R.id.button_quitter_niv);
+        buttonQuitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMain();
+            }
+        });
 
         buttonFacile = (Button) findViewById(R.id.button_facile);
         buttonFacile.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +55,10 @@ public class NiveauxActivity extends AppCompatActivity {
                 openJeuChrono();
             }
         });
+    }
+    public void openMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
     public void openJeuFacile() {
         Intent intent = new Intent(this, JeuActivity.class);

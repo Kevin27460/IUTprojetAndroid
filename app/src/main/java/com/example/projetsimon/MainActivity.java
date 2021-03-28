@@ -10,6 +10,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     private Button buttonPlay;
+    private Button buttonRegle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +24,22 @@ public class MainActivity extends AppCompatActivity {
                 openNiveaux();
             }
         });
+        buttonRegle = (Button) findViewById(R.id.button_regle);
+        buttonRegle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRegle();
+            }
+        });
     }
+
+
     public void openNiveaux() {
         Intent intent = new Intent(this, NiveauxActivity.class);
+        startActivity(intent);
+    }
+    public void openRegle() {
+        Intent intent = new Intent(this, regle.class);
         startActivity(intent);
     }
 }
