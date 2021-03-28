@@ -10,8 +10,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class JeuActivity extends AppCompatActivity {
+    private Button buttonStart;
     private Button buttonQuitter;
     private Button Button01;
     private Button Button02;
@@ -27,7 +30,7 @@ public class JeuActivity extends AppCompatActivity {
     int [] sequenceTab = new int[19];
     int maxSeq = 0;
     int startSeq = 0;
-    int nbrBloc = 0;
+    int nbrBloc = 4;
     int vie = 0;
     double multiplicateurScore = 0;
 
@@ -65,7 +68,20 @@ public class JeuActivity extends AppCompatActivity {
             }
         }
 
-        Jeu(niveaux);
+        buttonStart = (Button) findViewById(R.id.button_start);
+        int finalNiveaux = niveaux;
+        buttonStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Jeu(finalNiveaux);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
 
     }
 
@@ -74,7 +90,7 @@ public class JeuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void Jeu(int niveaux) {
+    public void Jeu(int niveau) throws InterruptedException {
 
         Button01.getBackground().setAlpha(0);
         Button02.getBackground().setAlpha(0);
@@ -87,7 +103,7 @@ public class JeuActivity extends AppCompatActivity {
         Button09.getBackground().setAlpha(0);
         Button10.getBackground().setAlpha(0);
 
-        switch(niveaux) {
+        switch(niveau) {
             case 1:
                 //Facile
                 Button02.getBackground().setAlpha(32);
@@ -118,59 +134,85 @@ public class JeuActivity extends AppCompatActivity {
                 multiplicateurScore = 2;
                 break;
         }
-        Random r = new Random();
-       //sequenceTab = initTab(startSeq);
-
-        //for(int i =0; i < 1; i++){
-          //  sequenceTab[i] = r.nextInt(nbrBloc);}
-        test.setText("test1");
-
+        test.setText("test0");
+        initTab(startSeq);
+        maxSeq=startSeq;
+        test.setText(String.valueOf(sequenceTab[startSeq-1]));//test de debug;
         affichage();
     }
 
 
 
-    private int[] initTab(int deb){
-        int [] Tab  = new int[19];
-        for(int i =0; i < deb; i++)
-            Tab[i] = new Random().nextInt(nbrBloc);
-            return Tab;
+    private void initTab(int deb){
+        Random r = new Random();
+        for(int i = 0; i < deb; i++){
+            sequenceTab[i] = r.nextInt(nbrBloc);
+
+        }
     }
 
-    private void affichage(){
-        test.setText("test2");
-        for(int i=0; i<maxSeq;i++)
+    private void affichage() throws InterruptedException {
+        test.setText("allume");
+        for(int i=0; i<4;i++)
         {
             switch(sequenceTab[i]) {
                 case 0:
+                    Thread thread = new Thread(){
+                        public void run(){
+
+                        }
+                    };
+
+                    thread.start();
+
+                    Button02.getBackground().setAlpha(255);
+
                     Button02.getBackground().setAlpha(32);
                     break;
                 case 1:
-                    Button04.getBackground().setAlpha(32);
+                    Button04.getBackground().setAlpha(255);
+
+                    Button02.getBackground().setAlpha(32);
                     break;
                 case 2:
-                    Button08.getBackground().setAlpha(32);
+                    Button08.getBackground().setAlpha(255);
+
+                    Button02.getBackground().setAlpha(32);
                     break;
                 case 3:
-                    Button10.getBackground().setAlpha(32);
+                    Button10.getBackground().setAlpha(255);
+
+                    Button02.getBackground().setAlpha(32);
                     break;
                 case 4:
-                    Button06.getBackground().setAlpha(32);
+                    Button06.getBackground().setAlpha(255);
+                  //  wait(1000 );
+                    Button02.getBackground().setAlpha(32);
                     break;
                 case 5:
-                    Button01.getBackground().setAlpha(32);
+                    Button01.getBackground().setAlpha(255);
+                 //   wait(1000 );
+                    Button02.getBackground().setAlpha(32);
                     break;
                 case 6:
-                    Button03.getBackground().setAlpha(32);
+                    Button03.getBackground().setAlpha(255);
+                 //   wait(1000 );
+                    Button02.getBackground().setAlpha(32);
                     break;
                 case 7:
-                    Button09.getBackground().setAlpha(32);
+                    Button09.getBackground().setAlpha(255);
+                  //  wait(1000 );
+                    Button02.getBackground().setAlpha(32);
                     break;
                 case 8:
-                    Button05.getBackground().setAlpha(32);
+                    Button05.getBackground().setAlpha(255);
+                  //  wait(1000 );
+                    Button02.getBackground().setAlpha(32);
                     break;
                 case 9:
-                    Button07.getBackground().setAlpha(32);
+                    Button07.getBackground().setAlpha(255);
+                  //  wait(1000 );
+                    Button02.getBackground().setAlpha(32);
                     break;
             }
         }
